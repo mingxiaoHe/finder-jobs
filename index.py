@@ -34,8 +34,10 @@ class AboutHandler(BaseHandler):
         self.render('about.html')
 
 class ApiJobsHandler(BaseHandler):
+    @tornado.web.asynchronous
     def get(self):
         self.write(json.dumps(GetJob(), ensure_ascii=False))
+        self.finish()
 
 if __name__ == '__main__':
     # SqlHelper()
